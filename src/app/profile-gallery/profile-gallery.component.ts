@@ -40,9 +40,14 @@ export class ProfileGalleryComponent implements OnInit {
     event.stopPropagation();
   }
 
-  deletePet(pet: Pet){
-    this.selectedPet=pet;
-    this.petService.deletePet(this.selectedPet.id);
+  deletePet(pet: Pet) {
+    this.selectedPet = pet;
+    this.petService.deletePet(this.selectedPet).subscribe(
+      data => {
+        this.getPets();
+        this.selectedPet = null;
+      }
+    )
   }
 
   onSubmit(): void {
@@ -50,6 +55,7 @@ export class ProfileGalleryComponent implements OnInit {
       .subscribe(pet => {
           this.addPetForm.reset();
           this.getPets()
+
         }
       );
 
