@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendUrl: `https://jeroenspetinder.herokuapp.com/pets`
+  backendUrl: `https://jeroenspetinder.herokuapp.com`
 };
 
 /*
