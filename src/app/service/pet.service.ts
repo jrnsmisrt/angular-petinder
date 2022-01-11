@@ -12,7 +12,7 @@ export class PetService {
 
 
   constructor(private http: HttpClient) {
-    this.url = `https://jeroenspetinder.herokuapp.com/pets`;
+    this.url = `${environment.backendUrl}/pets`;
   }
 
   getPets(): Observable<any> {
