@@ -24,4 +24,11 @@ export class PetService {
     return this.http.post(this.url, pet);
   }
 
+  deletePet(id: number):Observable<any>{
+    return this.http.delete(`${this.url}/${id}`,  {responseType: 'text'});
+  }
+
+  findPetByName(name: string): Observable<any> {
+   return this.http.get<Pet>(`${this.url}/${name}`);
+  }
 }

@@ -3,6 +3,7 @@ import {PetService} from "../service/pet.service";
 import {Pet} from "../model/Pet";
 import {FormBuilder} from "@angular/forms";
 
+
 @Component({
   selector: 'app-profile-gallery',
   templateUrl: './profile-gallery.component.html',
@@ -37,6 +38,11 @@ export class ProfileGalleryComponent implements OnInit {
   selectPet(pet: Pet, event: Event) {
     this.selectedPet = pet;
     event.stopPropagation();
+  }
+
+  deletePet(pet: Pet){
+    this.selectedPet=pet;
+    this.petService.deletePet(this.selectedPet.id);
   }
 
   onSubmit(): void {

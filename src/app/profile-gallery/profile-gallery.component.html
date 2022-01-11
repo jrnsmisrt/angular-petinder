@@ -34,11 +34,11 @@
           <div class="dialog-centered">
             <a type="button"
                class="btn btn-primary btn-lg dialog-centered"
-               routerLink="/setup-date/{{selectedPet.name}}">
+               [routerLink]="['../setup-date', selectedPet.name]">
               Setup date
             </a>
           </div>
-          <button type="submit" class="btn-primary">delete pet</button>
+          <a type="button" class="btn btn-primary btn-sm " (click)="deletePet(selectedPet.id)" >delete pet</a>
         </section>
 
       </div>
