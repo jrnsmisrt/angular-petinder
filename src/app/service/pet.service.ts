@@ -12,7 +12,7 @@ export class PetService {
 
 
   constructor(private http: HttpClient) {
-    this.url = `${environment.backendUrl}/pets`;
+    this.url = `https://jeroenspetinder.herokuapp.com/pets`;
   }
 
   getPets(): Observable<any> {
@@ -25,7 +25,7 @@ export class PetService {
   }
 
   deletePet(id: number):Observable<any>{
-    return this.http.delete(`${this.url}/${id}`,  {responseType: 'text'});
+    return this.http.delete(`${this.url}/${id}`);
   }
 
   findPetByName(name: string): Observable<any> {
