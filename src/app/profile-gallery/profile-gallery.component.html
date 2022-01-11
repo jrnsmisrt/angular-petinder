@@ -15,73 +15,91 @@
     </div>
     <div class="col-md-3">
       <section class="tiny-dialog">
-        <h3>Find your pet</h3>
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input id="name"
-                 name="name"
-                 class="form-control"
-                 placeholder="enter a petname :)"
-                 [(ngModel)]="searchText">
-        </div>
+        <details>
+          <summary><h3>Find your pet</h3></summary>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name"
+                   name="name"
+                   class="form-control"
+                   placeholder="enter a petname :)"
+                   [(ngModel)]="searchText">
+          </div>
+        </details>
       </section>
       <div class="gallery-detail">
         <section id="petProfile" class="tiny-dialog fader" *ngIf="selectedPet">
           <h3>{{selectedPet.name}}</h3>
           <p>{{selectedPet.profileText}}</p>
-          <button type="submit" class="btn-primary pull-right">delete pet</button>
+          <div class="dialog-centered">
+            <a type="button"
+               class="btn btn-primary btn-lg dialog-centered"
+               routerLink="/setup-date/{{selectedPet.name}}">
+              Setup date
+            </a>
+          </div>
+          <button type="submit" class="btn-primary">delete pet</button>
         </section>
 
       </div>
       <section class="tiny-dialog">
-        <details><summary><h3>add a pet</h3></summary>
-        <div class="form-group">
-          <form [formGroup]="addPetForm" (ngSubmit)="onSubmit()">
-            <label for="petname">Name</label>
-            <input id="petname"
-                   formControlName="name"
-                   class="form-control"
-                   placeholder="enter a petname"
-                   type="text"
-            >
-            <label for="petkind">Kind</label>
-            <input id="petkind"
-                   formControlName="kind"
-                   class="form-control"
-                   placeholder="enter the kind of pet"
-                   type="text"
-            >
-            <label for="petimage">Image</label>
-            <input id="petimage"
-                   formControlName="image"
-                   class="form-control"
-                   placeholder="enter image url of pet"
-                   type="text"
-            >
-            <label for="petprofiletext">Profile description</label>
-            <input id="petprofiletext"
-                   formControlName="profileText"
-                   class="form-control"
-                   placeholder="enter a profile description"
-                   type="text"
-            >
-            <label for="petpopularity">Popularity of pet</label>
-            <input id="petpopularity"
-                   formControlName="popularity"
-                   class="form-control"
-                   placeholder="enter a popularity number"
-                   type="text"
-            >
-            <button class="btn-primary pull-left" type="submit">
-              add pet
-            </button>
-            <button class="btn-primary pull-right" type="reset">
-              clear form
-            </button>
-          </form>
-        </div>
+        <details>
+          <summary><h3>add a pet</h3></summary>
+          <div class="form-group">
+            <form [formGroup]="addPetForm" (ngSubmit)="onSubmit()">
+              <label for="petname">Name</label>
+              <input id="petname"
+                     formControlName="name"
+                     class="form-control"
+                     placeholder="enter a petname"
+                     type="text"
+              >
+              <label for="petkind">Kind</label>
+              <input id="petkind"
+                     formControlName="kind"
+                     class="form-control"
+                     placeholder="enter the kind of pet"
+                     type="text"
+              >
+              <label for="petimage">Image</label>
+              <input id="petimage"
+                     formControlName="image"
+                     class="form-control"
+                     placeholder="enter image url of pet"
+                     type="text"
+              >
+              <label for="petprofiletext">Profile description</label>
+              <input id="petprofiletext"
+                     formControlName="profileText"
+                     class="form-control"
+                     placeholder="enter a profile description"
+                     type="text"
+              >
+              <label for="petpopularity">Popularity of pet</label>
+              <input id="petpopularity"
+                     formControlName="popularity"
+                     class="form-control"
+                     placeholder="enter a popularity number"
+                     type="text"
+              >
+              <br>
+              <div class="row">
+                <div class="col-sm-5">
+                  <button class="btn btn-primary btn-lg pull-left" type="submit">
+                    add pet
+                  </button>
+                </div>
+                <div class="col-sm-5">
+                  <button class="btn btn-primary btn-lg pull-right" type="reset">
+                    clear form
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </details>
       </section>
+
     </div>
 
   </div>
