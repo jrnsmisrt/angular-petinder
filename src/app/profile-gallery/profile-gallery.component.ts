@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PetService} from "../service/pet.service";
 import {Pet} from "../model/Pet";
+import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-profile-gallery',
@@ -10,10 +11,17 @@ import {Pet} from "../model/Pet";
 
 export class ProfileGalleryComponent implements OnInit {
   pets: Pet[] = [];
-  selectedPet: Pet|any;
+  selectedPet: Pet | any;
   searchText: string;
+  addPetForm = this.formBuilder.group({
+    name: '',
+    kind: '',
+    image: '',
+    profileText: '',
+    popularity: ''
+  });
 
-  constructor(private petService:PetService) {
+  constructor(private petService: PetService, private formBuilder: FormBuilder) {
     this.selectedPet = undefined;
     this.searchText = '';
   }
@@ -23,13 +31,23 @@ export class ProfileGalleryComponent implements OnInit {
   }
 
   getPets(): void {
-    this.petService.getPets().subscribe(pets => this.pets=pets);
+    this.petService.getPets().subscribe(pets => this.pets = pets);
   }
 
-  selectPet(pet: Pet, event: Event){
+  selectPet(pet: Pet, event: Event) {
     this.selectedPet = pet;
     event.stopPropagation();
   }
 
+  onSubmit(): void {
+    this.petService.addPet(this.addPetForm.value)
+      .subscribe(pet => {
+          this.addPetForm.reset();
+          this.getPets()
+        }
+      );
+
+
+  }
 
 }
